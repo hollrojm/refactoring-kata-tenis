@@ -3,7 +3,10 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Before;
+import com.sofka.tennis1.TennisGame;
+import com.sofka.tennis1.TennisGame1;
+import com.sofka.tennis1.TennisGame2;
+import com.sofka.tennis1.TennisGame3;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
