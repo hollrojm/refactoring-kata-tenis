@@ -1,5 +1,8 @@
 package com.sofka.tennis1;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class TennisGame1 implements TennisGame {
 
     private int pointsPlayerOne = 0;
@@ -22,9 +25,11 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
 
         if (pointsPlayerOne == pointsPlayerTwo)
-            return result();
+            return result(pointsPlayerOne);
         return winResultTemp();
     }
+
+
 
     private String winResultTemp() {
         return (pointsPlayerOne >= 4 || pointsPlayerTwo >= 4) ? advantageWinResult() : scoreResultTemp();
@@ -88,20 +93,8 @@ public class TennisGame1 implements TennisGame {
         return score;
     }
 
-    private String result() {
-        switch (pointsPlayerOne)
-        {
-            case 0:
-                   return "Love-All";
-
-            case 1:
-                    return "Fifteen-All";
-
-            case 2:
-                    return  "Thirty-All";
-
-            default:
-                    return "Deuce";
-        }
+    private String result(int scorePlayer) {
+        List<String> scores = Arrays.asList("Love-All", "Fifteen-All", "Thirty-All", "Deuce", "Deuce");
+        return scores.get(scorePlayer);
     }
 }

@@ -50,7 +50,7 @@ public class TennisGame2 implements TennisGame
 
 
     public String advance(int scoreDifference){
-        StringBuilder stringBuilder = new StringBuilder();
+
         switch (scoreDifference){
             case 1:
                 return "Advantage player1";
