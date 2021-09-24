@@ -14,24 +14,44 @@ public class TennisGame3 implements TennisGame {
 
     public String getScore() {
         String s;
-        if (p1 < 4 && p2 < 4 && !(p1 + p2 == 6)) {
-            String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"}; 
-            s = p[p1];
-            return (p1 == p2) ? s + "-All" : s + "-" + p[p2];
+        if  (puntuation()){
+        return scoreResult();
+
         } else {
-            if (p1 == p2)
+            if (draw())
                 return "Deuce";
-            s = p1 > p2 ? p1N : p2N;
-            return ((p1-p2)*(p1-p2) == 1) ? "Advantage " + s : "Win for " + s;
+
         }
+        return event();
+    }
+    public boolean puntuation(){
+        return (p2< 4 )&& (p1 < 4) && !(p2 + p1 == 6);
+    }
+    public boolean draw(){
+        return (p1 == p2);
+    }
+    public String event(){
+        return (deductPoints() == 1) ? "Advantage " + winning() : "Win for " + winning();
+    }
+    public double deductPoints(){
+        return Math.pow((p2 - p1), 2);
+    }
+    public String winning(){
+        return p2 > p1 ? p1N : p2N;
+    }
+    public String scoreResult(){
+        String[] score = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
+        return (p2 == p1) ? score[p2] + "-All" : score[p2] + "-" + score[p1];
     }
     
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
-            this.p1 += 1;
-        else
-            this.p2 += 1;
+        int score = (playerName == "player1") ? (p2 ++) : (p1 ++);
         
     }
+
+
+
+
+
 
 }
